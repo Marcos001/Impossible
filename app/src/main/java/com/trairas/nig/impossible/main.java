@@ -35,7 +35,17 @@ public class main extends Activity implements View.OnTouchListener {
     @Override
     public boolean onTouch(View v, MotionEvent event) {
 
+        if(event.getX() < 100 && event.getY() > 290 && event.getY() < 310) {
+            view.init();
+        }
+        // Exit
+        if(event.getX() < 100 && event.getY() > 490 && event.getY() < 510) {
+            System.exit(0);
+        }
+
+        // Incrementa em 10 pixels a posição
         view.moveDown(10);
+        // vertical do player e o placar
         view.addScore(100);
 
         return true;

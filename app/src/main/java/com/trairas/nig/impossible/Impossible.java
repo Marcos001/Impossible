@@ -2,6 +2,7 @@ package com.trairas.nig.impossible;
 
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -46,7 +47,8 @@ public class Impossible extends SurfaceView implements Runnable {
 
             //bloqueia o canvas: <-> () <-> :
             Canvas canvas = holder.lockCanvas();
-            canvas.drawColor(Color.BLACK);
+            //canvas.drawColor(Color.BLACK);
+            canvas.drawBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.sky), 0, 0, null);
 
 
             //desenha o player
@@ -75,9 +77,16 @@ public class Impossible extends SurfaceView implements Runnable {
         }
     }
 
+    public void init(){
+        enemyX = enemyY = enemyRadius = 0;
+        playerX = playerY = 300;
+        playerRadius = 50;
+        gameover = false;
+    }
+
 
     private void drawEnemy(Canvas canvas){
-        paint.setColor(Color.GRAY);
+        paint.setColor(Color.RED);
         enemyRadius++;
         canvas.drawCircle(enemyX, enemyY, enemyRadius, paint);
     }
@@ -89,7 +98,9 @@ public class Impossible extends SurfaceView implements Runnable {
 
     private void drawPlayer(Canvas canvas){
         paint.setColor(Color.GREEN);
-        canvas.drawCircle(playerX, playerY , 50, paint);
+        //canvas.drawCircle(playerX, playerY , 50, paint);
+        canvas.drawBitmap(BitmapFactory.decodeResource(getResources(),
+                R.drawable.nave), playerX-50, playerY-50, null);
 
     }
 
