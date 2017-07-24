@@ -36,6 +36,7 @@ public class main extends Activity implements View.OnTouchListener {
     public boolean onTouch(View v, MotionEvent event) {
 
         view.moveDown(10);
+        view.addScore(100);
 
         return true;
     }
